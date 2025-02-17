@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // הגדרת כתובת ה-API כ-bririd defualt
-axios.defaults.baseURL = "http://localhost:5279"; // עדכן לפורט המתאים שבו ה-API שלך רץ
+axios.defaults.baseURL = "https://todoapi-server-9axa.onrender.com"; // עדכן לפורט המתאים שבו ה-API שלך רץ
 
 // הוספת interceptor לשגיאות
 axios.interceptors.response.use(

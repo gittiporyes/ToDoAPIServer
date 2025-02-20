@@ -5,21 +5,21 @@ function App() {
   const [newTodo, setNewTodo] = useState("");
   const [todos, setTodos] = useState([]);
 
-  // async function getTodos() {
-  //   try {
-  //     const todos = await service.getTasks();
-  //     console.log("Fetched todos:", todos); // בדיקה מה מוחזר מהשרת
-  //     setTodos(Array.isArray(todos) ? todos : []); // מבטיחים שהתוצאה תהיה מערך
-  //   } catch (error) {
-  //     console.error("Error fetching todos:", error);
-  //     setTodos([]); // במקרה של שגיאה, נמנע קריסת האפליקציה
-  //   }
-  // }
-
   async function getTodos() {
-    const todos = await service.getTasks();
-    setTodos(todos);
+    try {
+      const todos = await service.getTasks();
+      console.log("Fetched todos:", todos); // בדיקה מה מוחזר מהשרת
+      setTodos(Array.isArray(todos) ? todos : []); // מבטיחים שהתוצאה תהיה מערך
+    } catch (error) {
+      console.error("Error fetching todos:", error);
+      setTodos([]); // במקרה של שגיאה, נמנע קריסת האפליקציה
+    }
   }
+
+  // async function getTodos() {
+  //   const todos = await service.getTasks();
+  //   setTodos(todos);
+  // }
 
   async function createTodo(e) {
     e.preventDefault();
@@ -53,6 +53,7 @@ function App() {
       <section className="main" style={{ display: "block" }}>
         <ul className="todo-list">
           {todos.map(todo => {
+                console.log("Fetched data from API:", data); // ב
             return (
               <li className={todo.IsComplete ? "completed" : ""} key={todo.Id}>
                 <div className="view">

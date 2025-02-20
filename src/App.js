@@ -54,7 +54,7 @@ function App() {
         <ul className="todo-list">
           {todos.map(todo => {
             return (
-              <li className={todoIisComplete ? "completed" : ""} key={todo.Id}>
+              <li className={todoIsComplete ? "completed" : ""} key={todo.Id}>
                 <div className="view">
                   <input className="toggle" type="checkbox" defaultChecked={todo.IsComplete} onChange={(e) => updateCompleted(todo, e.target.checked)} />
                   <label>{todo.Name}</label>

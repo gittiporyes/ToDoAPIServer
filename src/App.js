@@ -53,7 +53,7 @@ function App() {
       <section className="main" style={{ display: "block" }}>
         <ul className="todo-list">
           {todos.map(todo => {
-                console.log("Fetched data from API:", data); // ב
+                console.log("Fetched data from API:", todo); // ב
             return (
               <li className={todo.IsComplete ? "completed" : ""} key={todo.Id}>
                 <div className="view">

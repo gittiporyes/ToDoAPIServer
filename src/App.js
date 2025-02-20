@@ -5,21 +5,21 @@ function App() {
   const [newTodo, setNewTodo] = useState("");
   const [todos, setTodos] = useState([]);
 
-  async function getTodos() {
-    try {
-      const todos = await service.getTasks();
-      console.log("Fetched todos:", todos); // בדיקה מה מוחזר מהשרת
-      setTodos(Array.isArray(todos) ? todos : []); // מבטיחים שהתוצאה תהיה מערך
-    } catch (error) {
-      console.error("Error fetching todos:", error);
-      setTodos([]); // במקרה של שגיאה, נמנע קריסת האפליקציה
-    }
-  }
-
   // async function getTodos() {
-  //   const todos = await service.getTasks();
-  //   setTodos(todos);
+  //   try {
+  //     const todos = await service.getTasks();
+  //     console.log("Fetched todos:", todos); // בדיקה מה מוחזר מהשרת
+  //     setTodos(Array.isArray(todos) ? todos : []); // מבטיחים שהתוצאה תהיה מערך
+  //   } catch (error) {
+  //     console.error("Error fetching todos:", error);
+  //     setTodos([]); // במקרה של שגיאה, נמנע קריסת האפליקציה
+  //   }
   // }
+
+  async function getTodos() {
+    const todos = await service.getTasks();
+    setTodos(todos);
+  }
 
   async function createTodo(e) {
     e.preventDefault();
@@ -29,7 +29,7 @@ function App() {
   }
 
   async function updateCompleted(todo, isComplete) {
-    await service.setCompleted(todo.id, isComplete);
+    await service.setCompleted(todo.Id, isComplete);
     await getTodos();//refresh tasks list (in order to see the updated one)
   }
 
